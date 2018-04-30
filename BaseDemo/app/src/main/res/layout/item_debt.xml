@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="presenter"
+            type="com.example.quyet.basedemo.adapter.BaseRecycleViewApdapter.Presenter"/>
+        <variable
+            name="viewmodel"
+            type="com.example.quyet.basedemo.viewmodel.DebtViewModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_debt_height">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3">
+
+            <TextView
+                android:text="@{viewmodel.creditor}"
+                android:textSize="@dimen/big_text_size"
+                android:id="@+id/tvCreditor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tvDebts"
+                android:text="@{Double.toString(viewmodel.debts)}"
+                android:layout_below="@id/tvCreditor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tvGN"
+                android:layout_below="@id/tvCreditor"
+                android:layout_toEndOf="@id/tvDebts"
+                android:text="~~"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:text="@{viewmodel.dateOfPayment}"
+                android:layout_below="@id/tvCreditor"
+                android:layout_toEndOf="@id/tvGN"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <Button
+                android:onClick="@{() -> presenter.onClick(viewmodel)}"
+                android:text="@string/btn_pay"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
+
+
+    </LinearLayout>
+</layout>
